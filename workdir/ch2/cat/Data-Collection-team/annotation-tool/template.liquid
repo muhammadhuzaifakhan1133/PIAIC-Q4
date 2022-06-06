@@ -1,0 +1,16 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<crowd-form>
+  <crowd-semantic-segmentation
+    name="crowd-semantic-segmentation"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="The purpose of this job is to segment cats in the picture. If multiple cats are visible, please segment each cat individually. Only live cats should be segmented: ignore toy cats, cat pictures, etc"
+    labels="{{ task.input.labels | to_json | escape }}"
+  >
+    <full-instructions header="Segmentation instructions">
+      <ol><li><strong>Read</strong> the task carefully and inspect the image.</li><li><strong>Read</strong> the options and review the examples provided to understand more about the labels.</li><li><strong>Choose</strong> the appropriate label that best suits the image.</li></ol>
+    </full-instructions>
+    <short-instructions>
+      <h3><span style="color: rgb(0, 138, 0);">Good example</span></h3><p>Enter description to explain a correctly done segmentation</p><p><img src="https://a.b.cdn.console.awsstatic.com/a2dba0f65c983f6039096057c10f1870b2c549de96f92711e456537144143e2b/src/images/quick-instructions-example-placeholder.png" style="max-width:100%"></p><h3><span style="color: rgb(230, 0, 0);">Bad example</span></h3><p>Enter description of an incorrectly done segmentation</p><p><img src="https://a.b.cdn.console.awsstatic.com/a2dba0f65c983f6039096057c10f1870b2c549de96f92711e456537144143e2b/src/images/quick-instructions-example-placeholder.png" style="max-width:100%"></p>
+    </short-instructions>
+  </crowd-semantic-segmentation>
+</crowd-form>
